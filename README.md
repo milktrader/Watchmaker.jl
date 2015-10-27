@@ -1,2 +1,4 @@
-# TimeSeriesAnalysis.jl
-Sandbox of time series analytical tools
+Watchmaker.jl
+=============
+
+Time series analytical tools in Julia.
