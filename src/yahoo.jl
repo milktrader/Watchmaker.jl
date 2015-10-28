@@ -14,8 +14,8 @@ Method Signature(s)
 
 Details
 
-      The yahoo method takes a stock name in the form of a string and returns a TimeArray corresponding to the 
-      Yahoo Finance ticker. With no argument, the default historical time series is the S&P 500.
+      The yahoo method takes a stock name in the form of a string and returns a TimeSeries.TimeArray data structure
+      corresponding to the Yahoo Finance ticker. With no argument, the default historical time series is the S&P 500.
 
 References
 
