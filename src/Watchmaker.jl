@@ -6,13 +6,11 @@ module Watchmaker
 
 using Base.Dates, TimeSeries, Requests
 
-export yahoo, fred, 
-       SPX, tenyear
+export yahoo, fred
 
 ###### include ##################
 
 include("timearray.jl")
-include("auth_token.jl")
 include("fred.jl")
 include("yahoo.jl")
 
