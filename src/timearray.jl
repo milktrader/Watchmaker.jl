@@ -25,9 +25,11 @@ function timearray(resp::Requests.Response)
     
     for r in 1:size(fvals,1)
         for c in 1:size(fvals,2)
-            if ~isempty(svals[r][c])
+            # is not empty and is not equal to FRED's iconic "." sentinel for missingness
+            if ~isempty(svals[r][c]) && ~isequal(svals[r][c],".\r")
                 fvals[r,c] = parse(Float64, svals[r][c])
             else
+                # captures FRED's "." sentinel
                 fvals[r,c] = NaN
             end
         end
