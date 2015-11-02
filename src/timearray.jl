@@ -1,4 +1,4 @@
-function timearray(resp::Requests.Response)
+function timearray(resp::Requests.Response; m="")
 
     #This function transform the Response object into a TimeArray
 
@@ -39,5 +39,5 @@ function timearray(resp::Requests.Response)
     names = split(head, ",")[2:end] # Won't need the Date name (fist column) for TimeArray
     names = ASCIIString[name for name in names]
 
-    return TimeArray(timestamp, fvals, names)
+    return TimeArray(timestamp, fvals, names, m)
 end

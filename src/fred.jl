@@ -16,7 +16,7 @@ Method Signature(s)
 Details
 
       The fred method takes a string argument that corresponds to a series code from the St. Louis Federal
-      Reserve (FRED) database. It returns the data in the TimeSeries.TimeArray data structre.  When no argument 
+      Reserve (FRED) database. It returns the data in the TimeSeries.TimeArray data structure.  When no argument 
       is provided, the default data set is the Consumer Price Index for All Urban Consumers: All Items (CPIAUCNS). 
 
 References
@@ -31,5 +31,5 @@ See Also
 
 function fred(series::ASCIIString="CPIAUCNS")
     resp = get("http://research.stlouisfed.org/fred2/series/$series/downloaddata/$series.csv")
-    timearray(resp)
+    timearray(resp, m=series)
 end

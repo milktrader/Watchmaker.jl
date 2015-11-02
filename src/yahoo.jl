@@ -29,5 +29,5 @@ See Also
 
 function yahoo(stock::ASCIIString="^GSPC") 
     resp = get("http://ichart.yahoo.com/table.csv?s=$stock")
-    timearray(resp)
+    timearray(resp, m=stock)
 end
