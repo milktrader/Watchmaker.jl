@@ -6,13 +6,16 @@ module Watchmaker
 
 using Base.Dates, TimeSeries, Requests, UnicodePlots
 
+import Base: hist
+
 export yahoo, fred,
-       plot
+       plot, hist
 
 ###### include ##################
 
 include("timearray.jl")
 include("plot.jl")
+include("hist.jl")
 include("fred.jl")
 include("yahoo.jl")
 
