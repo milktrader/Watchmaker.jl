@@ -2,9 +2,7 @@ using FactCheck
 FactCheck.setstyle(:compact)
 FactCheck.onlystats(true)
 
-println("")
-
-facts("Unit tests confirm correct algorithm implementation") do
+facts("Plot object is a kernel density") do
 
     context("true things are true") do
         @fact 1 --> 1
@@ -18,5 +16,3 @@ facts("Unit tests confirm correct algorithm implementation") do
         @pending foo(12) --> "foo"
     end
 end
-
-println("")
