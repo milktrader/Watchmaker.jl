@@ -1,10 +1,11 @@
+using MarketData
 FactCheck.setstyle(:compact)
 FactCheck.onlystats(true)
 
 
 facts("In REPL plotting wrappers work for histogram") do
 
-    h = hist(cl);
+    h = uhist(cl);
 
     context("attributes are correct") do
         @fact h.title  --> "AAPL Close"

@@ -1,8 +1,7 @@
 """
 Description
 
-      The kplot() method takes a TimeSeries.TimeArray object, computes the percentchange, and plots a kernel density
-      plot using the Winston plotting package.
+      The kplot() method takes a TimeSeries.TimeArray object and plots a kernel density plot using the Winston plotting package.
 
 Usage
 
@@ -13,15 +12,15 @@ Usage
 
 Method Signature(s)
 
-      kplot(t::TimeSeries.TimeArray, n=1, LHS="red", RHS="green", center=0.0; caption="")
+      kplot(t::TimeSeries.TimeArray; n=1, LHS="#FFFFCC", RHS="#FFFF33", center=0.0, caption="")
 
 Details
 
       The kplot() method plots a kernel density using the Winston plotting package. The plot is colored around a defined
-      center, which defaults to 0.0. Left- (LHS) and right-side (RHS) colors default to red and green respectively. The first argument is
-      a TimeSeries.TimeArray, while the second argument defines the column to be plotted and defaults to n=1. When the meta
-      field is occupied with a string, it, along with the column name, becomes the plot's caption. Since the caption is a keyword argument,
-      it can be selected be any string with the function call.
+      center, which defaults to 0.0. Left- (LHS) and right-side (RHS) colors default to "red" and "green" respectively. The first
+      argument is a TimeSeries.TimeArray, while the second argument defines the column to be plotted and defaults to n=1. When the meta
+      field is occupied with a string, it, along with the column name, becomes the plot's caption. Since the caption is a keyword
+      argument, it can be selected be any string with the function call.
 
 References
 
@@ -32,7 +31,10 @@ See Also
       uhist(x) which plots time series in REPL
 """
 
-function kplot(t::TimeSeries.TimeArray, n::Int=1, LHS::ASCIIString="red", RHS::ASCIIString="green", center::Float64=0.0; caption::ASCIIString="")
+function kplot(t::TimeSeries.TimeArray; n::Int=1, 
+               LHS=colorant"goldenrod", 
+               RHS=colorant"khaki", 
+               center::Float64=0.0, caption::ASCIIString="")
 
     # initialize Winston
     # KernelDensity.Winston_init()
@@ -64,4 +66,8 @@ function kplot(t::TimeSeries.TimeArray, n::Int=1, LHS::ASCIIString="red", RHS::A
     # plotting
     p = Winston.plot(title=caption)
     add(p, f1, f2, f3)
+
+    # add some statistics
+    pos, neg = length(x1), length(x2)
+    Winston.text(minimum(x1), min(maximum(y1), maximum(y2)), "Positive = $pos \nNegative = $neg")
 end

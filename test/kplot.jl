@@ -1,18 +1,12 @@
-using FactCheck
 FactCheck.setstyle(:compact)
 FactCheck.onlystats(true)
 
-facts("Plot object is a kernel density") do
+facts("kplot object has correct attributes") do
 
-    context("true things are true") do
-        @fact 1 --> 1
-    end
-  
-    context("errors are thrown when expected") do
-        @fact_throws find(foo)
-    end
+    p = kplot(percentchange(cl))
 
-    context("pending facts are pending") do
-        @pending foo(12) --> "foo"
+    context("plot attributes are correct") do
+        @fact typeof(p.x1)   --> Winston.HalfAxisX
+        @fact foo.attr[:title] --> "AAPL Close"
     end
 end
