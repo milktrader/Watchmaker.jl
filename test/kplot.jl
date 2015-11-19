@@ -7,6 +7,6 @@ facts("kplot object has correct attributes") do
 
     context("plot attributes are correct") do
         @fact typeof(p.x1)   --> Winston.HalfAxisX
-        @fact foo.attr[:title] --> "AAPL Close"
+        @fact p.attr[:title] --> "AAPL Close"
     end
 end

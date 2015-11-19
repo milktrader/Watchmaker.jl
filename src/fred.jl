@@ -1,7 +1,7 @@
 """
 Description
 
-        The fred method is a wrapper to download financial and economic time series data from the 
+        The fred() method is a wrapper to download financial and economic time series data from the 
         St. Louis Federal Reserve (FRED).
 
 Usage
@@ -11,7 +11,7 @@ Usage
 
 Method Signature(s)
 
-      fred1(series::ASCIIString="CPIAUCNS")
+      fred(series::ASCIIString="CPIAUCNS")
 
 Details
 

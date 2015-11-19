@@ -1,7 +1,7 @@
 """
 Description
 
-      The colors() method either lists available colors or plots a specified color.
+      The colors() method either lists available colors or plots a specified color(s).
 
 Usage
 

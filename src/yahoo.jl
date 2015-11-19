@@ -1,7 +1,7 @@
 """
 Description
 
-        The yahoo method is a wrapper for downloading historical stock prices from Yahoo.
+        The yahoo() method is a wrapper for downloading historical stock prices from Yahoo.
 
 Usage
 
@@ -10,7 +10,7 @@ Usage
 
 Method Signature(s)
 
-      yahoo1(stock::ASCIIString="^GSPC")
+      yahoo(stock::ASCIIString="^GSPC")
 
 Details
 

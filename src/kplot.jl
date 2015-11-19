@@ -68,6 +68,6 @@ function kplot(t::TimeSeries.TimeArray; n::Int=1,
     add(p, f1, f2, f3)
 
     # add some statistics
-    pos, neg = length(x1), length(x2)
+    pos, neg = length(findall(t .>= 0)), length(findall(t .< 0))
     Winston.text(minimum(x1), min(maximum(y1), maximum(y2)), "Positive = $pos \nNegative = $neg")
 end

@@ -9,20 +9,20 @@ using Base.Dates, Requires, TimeSeries, Requests, UnicodePlots, Winston, KernelD
 import Base: hist
 
 export yahoo, fred,
-       uplot, uhist,
        plot, kplot,
-       colors,
-       goldenrod, khaki
+       uplot, uhist,
+       colors, palette, default_colors 
 
 ###### include ##################
 
 include("timearray.jl")
-include("uplot.jl")
-include("uhist.jl")
-include("plot.jl")
-include("kplot.jl")
-include("colors.jl")
 include("fred.jl")
 include("yahoo.jl")
+include("plot.jl")
+include("kplot.jl")
+include("uplot.jl")
+include("uhist.jl")
+include("colors.jl")
+include("const.jl")
 
 end
