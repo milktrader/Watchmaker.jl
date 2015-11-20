@@ -6,7 +6,7 @@ module Watchmaker
 
 using Base.Dates, Requires, TimeSeries, Requests, UnicodePlots, Winston, KernelDensity, Colors
 
-import Base: hist
+import Base: hist, first, last
 
 export yahoo, fred,
        plot, kplot,
@@ -24,5 +24,7 @@ include("uplot.jl")
 include("uhist.jl")
 include("colors.jl")
 include("const.jl")
+include("first.jl")
+include("last.jl")
 
 end
