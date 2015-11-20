@@ -29,31 +29,18 @@ See Also
 """
 
 function  plot(ts::TimeSeries.TimeArray...)
+    # stop the madness at 6
     length(ts) > 6 ? error("maximum of 6 time series at a time") : n = length(ts)
-    
-    # the loop takes care of inspecting every max value except the last one
-    max_y  = maximum(ts[n].values)
-    min_x  = ts[n].timestamp[1]
 
     # the legend names are taken from the series meta data
     legend = Array(ASCIIString, n)
+
     # the last time series is outside the loop so just fill it in here
-    isa(ts[t].meta, AbstractString) ? legend[n] = ts[n].meta : legend[n] = string(n) 
+    isa(ts[n].meta, AbstractString) ? legend[n] = ts[n].meta : legend[n] = string(n) 
 
     for t in 1:n- 1
-
         # fill out the legend
         isa(ts[t].meta, AbstractString) ? legend[t] = ts[t].meta : legend[t] = string(t) 
-
-        # find the max_y to place the legend
-        if maximum(ts[t].values) > max_y 
-            max_y = maximum(ts[t].values)
-        end
-
-        # find the min_x to place the legend
-        if ts[t].timestamp[1] < min_x
-            min_x = ts[t].timestamp[1]
-        end
 
         # plot
         Winston.timeplot(ts[t].timestamp, ts[t].values[:,1], color=default_colors[t])
@@ -64,11 +51,11 @@ function  plot(ts::TimeSeries.TimeArray...)
     Winston.hold(false)
 
     for s in 1:n -1
-        lab = Winston.PlotLabel(ts[s].timestamp, max_y, legend[s])
-        Winston.add(p, lab, color=default_colors[s])
+        lab = Winston.PlotLabel(0.1, 1-0.05s, legend[s], color=default_colors[s])
+        Winston.add(p, lab)
     end
-
-    lab = Winston.PlotLabel(max_x, max_y, legend[n])
-    Winston.add(p, lab, color=default_colors[n])
+ 
+    lab = Winston.PlotLabel(0.1, 1-0.05n, legend[n], color=default_colors[n])
+    return Winston.add(p, lab)
 
 end
