@@ -12,7 +12,12 @@ Usage
 
 Method Signature(s)
 
-      kplot(t::TimeSeries.TimeArray; n=1, LHS="#FFFFCC", RHS="#FFFF33", center=0.0, caption="")
+      kplot(t::TimeSeries.TimeArray; 
+            n::Int=1, 
+            LHS=colorant"goldenrod", 
+            RHS=colorant"khaki", 
+            center::Float64=0.0, 
+            title::ASCIIString="")
 
 Details
 
@@ -34,7 +39,7 @@ See Also
 function kplot(t::TimeSeries.TimeArray; n::Int=1, 
                LHS=colorant"goldenrod", 
                RHS=colorant"khaki", 
-               center::Float64=0.0, caption::ASCIIString="")
+               center::Float64=0.0, title::ASCIIString="")
 
     # initialize Winston
     # KernelDensity.Winston_init()
@@ -44,8 +49,8 @@ function kplot(t::TimeSeries.TimeArray; n::Int=1,
     isa(t.meta, AbstractString) ? m = t.meta :  m = ""
 
     # title auto-fill
-    if caption == ""
-        caption = string(m, " ", c) 
+    if title == ""
+        title = string(m, " ", c) 
     end
 
     k  = kde(v)
@@ -64,7 +69,7 @@ function kplot(t::TimeSeries.TimeArray; n::Int=1,
     f3 = FillBelow(x3, y3)
 
     # plotting
-    p = Winston.plot(title=caption)
+    p = Winston.plot(title=title)
     add(p, f1, f2, f3)
 
     # add some statistics
