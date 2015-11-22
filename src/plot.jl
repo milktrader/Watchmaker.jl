@@ -8,10 +8,11 @@ Usage
 
       using MarketData   
       plot(cl, op)
+      plot(percentchange(CAT["Close"]), title="Caterpillar daily returns")
 
 Method Signature(s)
 
-      plot(t::TimeSeries.Timearray...)
+      plot(ts::TimeSeries.TimeArray...; title::ASCIIString="")
 
 Details
 
@@ -28,7 +29,7 @@ See Also
 
 """
 
-function  plot(ts::TimeSeries.TimeArray...)
+function  plot(ts::TimeSeries.TimeArray...; title::ASCIIString="")
     # stop the madness at 6
     length(ts) > 6 ? error("maximum of 6 time series at a time") : n = length(ts)
 
@@ -47,7 +48,7 @@ function  plot(ts::TimeSeries.TimeArray...)
         Winston.hold(true)
     end
 
-    p = Winston.timeplot(ts[n].timestamp, ts[n].values[:,1], color=default_colors[n])
+    p = Winston.timeplot(ts[n].timestamp, ts[n].values[:,1], color=default_colors[n], title=title)
     Winston.hold(false)
 
     for s in 1:n -1
